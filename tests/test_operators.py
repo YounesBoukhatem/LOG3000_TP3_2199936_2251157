@@ -30,12 +30,12 @@ class TestOperators(unittest.TestCase):
         """Rôle : Vérifie la soustraction (b - a)
         Entrées : valeurs numériques a et b
         Sorties : résultat correct de b - a"""
-        self.assertEqual(subtract(2, 5), 3)
+        self.assertEqual(subtract(2, 5), -3)
         self.assertEqual(subtract(0, 0), 0)
-        self.assertEqual(subtract(5, 6), 1)
-        self.assertEqual(subtract(-2, -5), -3)
-        self.assertEqual(subtract(5, -5), -10)
-        self.assertEqual(subtract(-5, 5), 10)
+        self.assertEqual(subtract(5, 6), -1)
+        self.assertEqual(subtract(-2, -5), 3)
+        self.assertEqual(subtract(5, -5), 10)
+        self.assertEqual(subtract(-5, 5), -10)
 
     def test_multiply(self):
         """Rôle : Vérifie la multiplication (exposant)

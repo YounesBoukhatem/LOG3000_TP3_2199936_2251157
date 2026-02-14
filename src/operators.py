@@ -34,7 +34,7 @@ def subtract(a, b):
     Sorties :
         float | int : Résultat de la soustraction (b - a).
     """
-    return b - a
+    return a - b
 
 
 def multiply(a, b):
