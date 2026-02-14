@@ -1,11 +1,10 @@
 """
 Module principal du serveur Flask pour la calculatrice web.
 
-Ce module :
-- Initialise l'application Flask
-- Définit les routes HTTP
-- Traite les expressions mathématiques envoyées par le frontend
-- Utilise les fonctions du module operators pour effectuer les calculs
+Rôle :
+    Initialise le serveur Flask, définit les routes HTTP,
+    et traite les expressions mathématiques envoyées par le frontend
+    en utilisant les fonctions du module operators.
 """
 
 from flask import Flask, request, render_template
@@ -13,8 +12,7 @@ from operators import add, subtract, multiply, divide
 
 app = Flask(__name__)
 
-# Dictionnaire associant chaque symbole d'opération
-# à la fonction correspondante dans le module operators
+# Dictionnaire associant chaque symbole d'opération à la fonction correspondante
 OPS = {
     '+': add,
     '-': subtract,
@@ -25,21 +23,19 @@ OPS = {
 
 def calculate(expr: str):
     """
-    Analyse et évalue une expression mathématique simple.
+    Rôle :
+        Analyse et évalue une expression mathématique simple
+        contenant un seul opérateur (+, -, *, /) et deux opérandes numériques.
 
-    L'expression doit contenir :
-    - Deux opérandes numériques
-    - Un seul opérateur parmi +, -, *, /
+    Entrées :
+        expr (str) : Expression mathématique sous forme de chaîne
+                     (ex: "3+4", "10 / 2").
 
-    Paramètres:
-        expr (str): Expression mathématique sous forme de chaîne
-                    (ex: "3+4", "10 / 2").
+    Sorties :
+        float | int : Résultat de l'opération effectuée.
 
-    Retour de fonction:
-        float | int: Résultat de l'opération effectuée.
-
-    Erreurs relevées:
-        ValueError:
+    Erreurs relevées :
+        ValueError : 
             - Si l'expression est vide ou invalide.
             - Si plusieurs opérateurs sont présents.
             - Si les opérandes ne sont pas des nombres.
@@ -58,7 +54,6 @@ def calculate(expr: str):
     # Recherche de l'opérateur dans la chaîne
     for i, ch in enumerate(s):
         if ch in OPS:
-            # Vérifie qu'un seul opérateur est présent
             if op_pos != -1:
                 raise ValueError("only one operator is allowed")
             op_pos = i
@@ -72,8 +67,7 @@ def calculate(expr: str):
     right = s[op_pos+1:]
 
     try:
-        # Conversion en float pour permettre les décimales
-        a = float(left)
+        a = float(left)  # Conversion en float pour permettre les décimales
         b = float(right)
     except ValueError:
         raise ValueError("operands must be numbers")
@@ -85,32 +79,44 @@ def calculate(expr: str):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     """
-    Gère la route principale de l'application web.
+    Rôle :
+        Gère la route principale de l'application web.
+        Affiche la page de la calculatrice (GET) ou
+        évalue l'expression saisie par l'utilisateur (POST).
 
-    Méthodes supportées:
-        - GET : Affiche la page de la calculatrice.
-        - POST : Récupère l'expression saisie par l'utilisateur,
-                 appelle la fonction calculate et affiche le résultat.
+    Entrées :
+        Méthode HTTP via Flask :
+            - GET : Aucun paramètre supplémentaire
+            - POST : Formulaire contenant la clé "display" avec l'expression
 
-    Retour de fonction:
-        str: Page HTML rendue avec ou sans résultat.
+    Sorties :
+        str : Page HTML rendue avec le résultat calculé
+              ou un message d'erreur si l'évaluation échoue.
     """
 
     result = ""
 
     if request.method == 'POST':
-        # Récupère l'expression saisie dans le champ "display"
         expression = request.form.get('display', '')
 
         try:
             result = calculate(expression)
         except Exception as e:
-            # Capture les erreurs pour les afficher proprement à l'utilisateur
+            # Affiche l'erreur à l'utilisateur
             result = f"Error: {e}"
 
     return render_template('index.html', result=result)
 
 
 if __name__ == '__main__':
-    # Lancement du serveur en mode debug pour le développement
+    """
+    Rôle :
+        Lance le serveur Flask en mode debug pour le développement.
+    
+    Entrées :
+        Aucune.
+
+    Sorties :
+        Lancement du serveur Flask accessible sur localhost:5000
+    """
     app.run(debug=True)
