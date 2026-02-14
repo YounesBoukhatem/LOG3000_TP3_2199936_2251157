@@ -23,6 +23,8 @@ class TestOperators(unittest.TestCase):
         Sorties : résultat correct de a + b"""
         self.assertEqual(add(2, 3), 5)
         self.assertEqual(add(-1, 1), 0)
+        self.assertEqual(add(-5, 4), -1)
+        self.assertEqual(add(-5, -4), -9)
 
     def test_subtract(self):
         """Rôle : Vérifie la soustraction (b - a)
@@ -30,6 +32,10 @@ class TestOperators(unittest.TestCase):
         Sorties : résultat correct de b - a"""
         self.assertEqual(subtract(2, 5), 3)
         self.assertEqual(subtract(0, 0), 0)
+        self.assertEqual(subtract(5, 6), -1)
+        self.assertEqual(subtract(-2, -5), 3)
+        self.assertEqual(subtract(5, -5), 10)
+        self.assertEqual(subtract(-5, 5), -10)
 
     def test_multiply(self):
         """Rôle : Vérifie la multiplication (exposant)
@@ -46,3 +52,5 @@ class TestOperators(unittest.TestCase):
         self.assertEqual(divide(5, 2), 2)
         with self.assertRaises(ZeroDivisionError):
             divide(5, 0)
+        self.assertEqual(divide(-6, 2), -3)
+        self.assertEqual(divide(8, -2), -4)

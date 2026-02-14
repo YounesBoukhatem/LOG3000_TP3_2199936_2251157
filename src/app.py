@@ -8,7 +8,12 @@ Rôle :
 """
 
 from flask import Flask, request, render_template
-from operators import add, subtract, multiply, divide
+try:
+    # when running as a module (from package)
+    from .operators import add, subtract, multiply, divide
+except ImportError:
+    # when running directly (python src/app.py)
+    from operators import add, subtract, multiply, divide
 
 app = Flask(__name__)
 
