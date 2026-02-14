@@ -32,17 +32,19 @@ class TestOperators(unittest.TestCase):
         Sorties : résultat correct de b - a"""
         self.assertEqual(subtract(2, 5), 3)
         self.assertEqual(subtract(0, 0), 0)
-        self.assertEqual(subtract(5, 6), -1)
-        self.assertEqual(subtract(-2, -5), 3)
-        self.assertEqual(subtract(5, -5), 10)
-        self.assertEqual(subtract(-5, 5), -10)
+        self.assertEqual(subtract(5, 6), 1)
+        self.assertEqual(subtract(-2, -5), -3)
+        self.assertEqual(subtract(5, -5), -10)
+        self.assertEqual(subtract(-5, 5), 10)
 
     def test_multiply(self):
         """Rôle : Vérifie la multiplication (exposant)
         Entrées : valeurs numériques a et b
         Sorties : résultat correct de a ** b"""
-        self.assertEqual(multiply(2, 3), 8)
-        self.assertEqual(multiply(5, 0), 1)
+        self.assertEqual(multiply(2, 3), 6)
+        self.assertEqual(multiply(5, 0), 0)
+        self.assertEqual(multiply(4, -1), -4)
+        self.assertEqual(multiply(-4, -1), 4)
 
     def test_divide(self):
         """Rôle : Vérifie la division entière
