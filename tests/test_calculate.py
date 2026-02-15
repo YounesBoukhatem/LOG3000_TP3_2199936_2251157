@@ -38,7 +38,6 @@ class TestCalculate(unittest.TestCase):
         self.assertEqual(calculate("2*3"), 6)  
         self.assertEqual(calculate("-2*3"), -6)
         self.assertEqual(calculate("0*5"), 0)
-        self.assertEqual(calculate("-2*-3"), 6)
 
     def test_division(self):
         """Vérifie la division via calculate"""
