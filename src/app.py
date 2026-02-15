@@ -53,6 +53,17 @@ def calculate(expr: str):
     # Suppression des espaces pour simplifier l'analyse
     s = expr.replace(" ", "")
 
+    # Si l'expression commence par un signe négatif, l'opérande de gauche est négative
+    is_left_side_negative = False
+    if s.startswith('-'):
+        s = s[1:]
+        is_left_side_negative = True
+
+    # On remplace les doubles négatifs par des positifs
+    s = s.replace("--", "+")
+
+    print(s)
+
     op_pos = -1
     op_char = None
 
@@ -76,6 +87,10 @@ def calculate(expr: str):
         b = float(right)
     except ValueError:
         raise ValueError("operands must be numbers")
+
+    # Correction de l'opérande de gauche si elle est négative
+    if is_left_side_negative:
+        a = -a
 
     # Appel dynamique de la fonction associée à l'opérateur
     return OPS[op_char](a, b)
