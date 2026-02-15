@@ -4,7 +4,7 @@ pour la calculatrice web.
 
 Rôle :
     Fournir les fonctions de calcul de base : addition, soustraction,
-    multiplication (actuellement exposant) et division entière.
+    multiplication et division entière.
 """
 
 def add(a, b):
@@ -40,16 +40,15 @@ def subtract(a, b):
 def multiply(a, b):
     """
     Rôle :
-        Calcule la puissance d’un nombre par un autre.
-        (Note : actuellement la fonction élève 'a' à la puissance 'b',
-        au lieu de faire une multiplication classique.)
+        Calcule la multiplication de deux nombres.
+    
 
     Entrées :
-        a (float | int) : Base.
-        b (float | int) : Exposant.
+        a (float | int) : Premier nombre.
+        b (float | int) : Deuxième nombre.
 
     Sorties :
-        float | int : Résultat de a élevé à la puissance b.
+        float | int : Résultat de la multiplication de a et b.
     """
     return a * b
 
