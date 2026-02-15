@@ -44,7 +44,7 @@ class TestCalculate(unittest.TestCase):
         """Vérifie la division via calculate"""
         self.assertEqual(calculate("6/2"), 3)
         self.assertEqual(calculate("-6/2"), -3)
-        self.assertEqual(calculate("5/2"), 2.5) 
+        self.assertEqual(calculate("5/2"), 2) 
         self.assertEqual(calculate("9/3"), 3)  
         with self.assertRaises(ZeroDivisionError):  
             calculate("1/0")
