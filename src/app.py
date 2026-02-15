@@ -25,6 +25,16 @@ OPS = {
     '/': divide,
 }
 
+def string_to_number(string : str): # Convertir un string en un int ou en un float dépendant de sa représentation
+    res = 0
+    try:
+        res = int(string)
+    except ValueError:
+        try:
+            res = float(string)
+        except ValueError:
+            raise ValueError("operands must be numbers")
+    return res
 
 def calculate(expr: str):
     """
@@ -71,11 +81,8 @@ def calculate(expr: str):
     left = s[:op_pos]
     right = s[op_pos+1:]
 
-    try:
-        a = float(left)  # Conversion en float pour permettre les décimales
-        b = float(right)
-    except ValueError:
-        raise ValueError("operands must be numbers")
+    a = string_to_number(left)
+    b = string_to_number(right)
 
     # Appel dynamique de la fonction associée à l'opérateur
     return OPS[op_char](a, b)
