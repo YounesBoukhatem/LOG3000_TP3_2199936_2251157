@@ -62,6 +62,9 @@ def calculate(expr: str):
     # On remplace les doubles négatifs par des positifs
     s = s.replace("--", "+")
 
+    # On remplace les additions de soustraction par des soustractions
+    s = s.replace("+-", "-")
+
     print(s)
 
     op_pos = -1
