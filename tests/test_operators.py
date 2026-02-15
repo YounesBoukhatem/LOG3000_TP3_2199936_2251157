@@ -38,9 +38,9 @@ class TestOperators(unittest.TestCase):
         self.assertEqual(subtract(-5, 5), -10)
 
     def test_multiply(self):
-        """Rôle : Vérifie la multiplication (exposant)
+        """Rôle : Vérifie la multiplication de deux nombres
         Entrées : valeurs numériques a et b
-        Sorties : résultat correct de a ** b"""
+        Sorties : résultat correct de a * b"""
         self.assertEqual(multiply(2, 3), 6)
         self.assertEqual(multiply(5, 0), 0)
         self.assertEqual(multiply(4, -1), -4)
