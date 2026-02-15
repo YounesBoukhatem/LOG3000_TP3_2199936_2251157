@@ -6,7 +6,6 @@ Numéro d’équipe : 23
 
 ## Objectif
 Ce projet est une application web de calculatrice développée avec Flask (Python).  
-La base de code initiale est partiellement fonctionnelle et nécessite une organisation, documentation et correction de bogues.  
 
 L’objectif de ce devoir est de :  
 1. Configurer correctement le projet sur GitHub pour faciliter la collaboration.  
@@ -38,7 +37,15 @@ L’objectif de ce devoir est de :
 5. Désactivez l'environnement virtuel au besoin (deactivate).
 
 ## Tests
-TODO: Une section sur les tests (comment exécuter les tests que vous ajouterez plus tard).
+1. Se mettre sur la racine du projet
+2. Lancer la commande suivante dans le terminal : python -m unittest discover -s tests -p "*.py" -v
+3. Vérifier les résultats des tests en lancant la commande manuellement pour chaque modification
 
 ## Contribution
-TODO: Une section sur le flux de contribution (branches, PR, issues).
+1. Cloner le projet avec : git clone https://github.com/YounesBoukhatem/LOG3000_TP3_2199936_2251157
+2. Créer une branche avec : git checkout -b feature/nom-de-la-fonctionnalité puis push avec
+git push --set-upstream origin feature/nom-de-la-fonctionnalité
+3. Créer des pull requests lorsque vos changements sont prêts à être mergés sur le main. Ajouter des contributeurs et des reviewers.
+4. Lorsqu'un bug apparaît ou qu'une fonction est à faire, créer un issue en ajoutant le titre, une description claire et les reviewers sur Github.
+5. Assurez-vous que votre branche est à jour avec le main.
+
